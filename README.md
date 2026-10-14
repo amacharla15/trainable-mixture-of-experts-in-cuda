@@ -13,6 +13,7 @@ python scaffold.py
 - [x] **1.** matmul_naive_kernel
 - [x] **7.** elementwise_add_kernel
 - [x] **8.** relu_forward_kernel
+- [x] **9.** relu_backward_kernel
 
 ---
 
