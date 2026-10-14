@@ -60,3 +60,13 @@ __global__ void relu_backward_kernel(const float* x, const float* dy, float* dx,
     }
 }
 
+# Step 10 - gelu_forward_kernel
+__global__ void gelu_forward_kernel(const float* x, float* y, int n) {
+    int gid = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (gid < n) {
+        float val = x[gid];
+        y[gid] = 0.5f * val * (1.0f + tanhf(0.79788456f * (val + 0.044715f * val * val * val)));
+    }
+}
+
