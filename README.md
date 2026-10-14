@@ -15,6 +15,7 @@ python scaffold.py
 - [x] **8.** relu_forward_kernel
 - [x] **9.** relu_backward_kernel
 - [x] **10.** gelu_forward_kernel
+- [x] **11.** gelu_backward_kernel
 
 ---
 
