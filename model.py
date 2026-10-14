@@ -22,6 +22,15 @@ __global__ void matmul_naive_kernel(const float* A, const float* B, float* C, in
     C[row * N + col] = temp;
 }
 
+# Step 5 - add_bias_row_kernel
+__global__ void add_bias_row_kernel(float* Y,const float* bias,int M,int N){
+    int col=blockIdx.x*blockDim.x+threadIdx.x;
+    int row=blockIdx.y*blockDim.y+threadIdx.y;
+    if(col<N && row<M){
+        Y[row*N+col]+=bias[col];
+    }
+}
+
 # Step 7 - elementwise_add_kernel
 __global__ void elementwise_add_kernel(const float* a, const float* b, float* out, int n) {
     // TODO: compute out[i] = a[i] + b[i] for i in [0, n)
