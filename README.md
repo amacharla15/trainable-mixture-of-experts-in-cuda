@@ -1,23 +1,31 @@
-# Trainable Mixture of Experts in CUDA
+Trainable Mixture-of-Experts in CUDA
 
-Build a trainable Mixture-of-Experts layer from scratch in CUDA, starting from low-level matmul and activation kernels and culminating in a full forward, backward, and training loop with load-balancing auxiliary loss. The project gives you hands-on experience with sparse routing, token dispatch, and end-to-end MoE training on the GPU.
+A CUDA/C++ implementation of a trainable Mixture-of-Experts (MoE) layer, built from low-level GPU kernels for matrix operations, sparse routing, token dispatch, expert computation, and backpropagation.
 
-## How to run
+Architecture
 
-```bash
-python scaffold.py
-```
+Input Tokens
+     |
+Router + Top-K Gating
+     |
+Token Dispatch
+     |
+Expert MLPs
+     |
+Weighted Output Combination
+     |
+MoE Output
 
-## Steps
+Implementation
 
-- [x] **1.** matmul_naive_kernel
-- [x] **5.** add_bias_row_kernel
-- [x] **7.** elementwise_add_kernel
-- [x] **8.** relu_forward_kernel
-- [x] **9.** relu_backward_kernel
-- [x] **10.** gelu_forward_kernel
-- [x] **11.** gelu_backward_kernel
+The project covers:
 
----
+CUDA Primitives: Matrix multiplication, bias operations, ReLU, GELU, and softmax.
 
-Built on Deep-ML.
+Sparse Routing: Top-K expert selection and gating.
+
+Token Dispatch: Gather, scatter, and expert-output combination.
+
+Expert Networks: MLP forward and backward passes.
+
+Training: Gradient computation, load-balancing loss, and SGD updates.
